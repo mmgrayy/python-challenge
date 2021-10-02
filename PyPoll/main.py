@@ -46,45 +46,43 @@ candidates= ["Kahn","Correy", "Li", "O'Tooley"]
 #List of vote counts ^
 Vote_Count= [Candidate_K_Votes,Candidate_C_Votes, Candidate_L_Votes, Candidate_O_Votes ]
 dictionary= dict(zip(candidates, Vote_Count))
+Winner_key= max(dictionary, key=dictionary.get)
 
+#creating variables for equations
+VT= len(Votes_Total)
 
-
-#Percent_K= (Candidate_K_Votes/ len(Votes_Total) * 100
-#print(int(Percent_K))
-            
 
 
 print("Election Results")
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
-print(f"Total Votes: {len(Votes_Total)}")
+print(f"Total Votes: {VT}")
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
-print(f"Total Votes for Candidate Khan: {percent_k:.3f}% ({(Candidate_K_Votes)} Votes)")
-print(f"Total Votes for Candidate Correy: {percent_c:.3f}% ({(Candidate_C_Votes)} Votes)")
-print(f"Total Votes for Candidate Li: {percent_l:.3f}%  ({(Candidate_L_Votes)} Votes)")
-print(f"Total Votes for Candidate O'Tooley: {percent_o:.3f}%    ({(Candidate_O_Votes)} Votes)")
+print(f"Total Votes for Candidate Khan: {percent_k:.2f}% ({(Candidate_K_Votes)} Votes)")
+print(f"Total Votes for Candidate Correy: {percent_c:.2f}% ({(Candidate_C_Votes)} Votes)")
+print(f"Total Votes for Candidate Li: {percent_l:.2f}%  ({(Candidate_L_Votes)} Votes)")
+print(f"Total Votes for Candidate O'Tooley: {percent_o:.2f}%    ({(Candidate_O_Votes)} Votes)")
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print("And the winner of the election is..........")
-print(max(dictionary))
+print(Winner_key)
 
-
+#exporting as a text file
 results_file=os.path.join('analysis','election_data_results.txt')
 with open (results_file, "w") as text:
-    text.write("Election Results")
-    text.write('n')
+    text.write("Election Results\n")
     text.write("~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    text.write('⁄n')
+    text.write('\n')
     text.write(f"Total Votes for Candidate Khan: {percent_k:.3f}% ({(Candidate_K_Votes)} Votes)")
-    text.write('/n')
+    text.write('\n')
     text.write(f"Total Votes for Candidate Correy: {percent_c:.3f}% ({(Candidate_C_Votes)} Votes)")
-    text.write('/n')
+    text.write('\n')
     text.write(f"Total Votes for Candidate Li: {percent_l:.3f}%  ({(Candidate_L_Votes)} Votes)")
-    text.write('/n')
+    text.write('\n')
     text.write(f"Total Votes for Candidate O'Tooley: {percent_o:.3f}%    ({(Candidate_O_Votes)} Votes)")
-    text.write('/n')
+    text.write('\n')
     text.write("~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    text.write('/n')
+    text.write('\n')
     text.write("And the winner of the election is..........")
-    text.write('/n')
-    text.write(max(dictionary))
+    text.write('\n')
+    text.write(Winner_key)
     lines=text.write
     print(lines)
